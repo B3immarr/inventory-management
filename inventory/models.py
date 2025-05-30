@@ -18,8 +18,8 @@ class Brand(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=200)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True, null=True)
     quantity = models.IntegerField()
     image = models.ImageField(upload_to='items/')
     description = models.TextField(blank=True)
