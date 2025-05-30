@@ -18,7 +18,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'inventory',
-     'grappelli',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
