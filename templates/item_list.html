@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item List</title>
+</head>
+<body>
+    <h1>Items</h1>
+
+    <form method="get">
+        <label>Category:</label>
+        <select name="category">
+            <option value="">All</option>
+            {% for cat in categories %}
+                <option value="{{ cat }}" {% if request.GET.category == cat %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Brand:</label>
+        <select name="brand">
+            <option value="">All</option>
+            {% for br in brands %}
+                <option value="{{ br }}" {% if request.GET.brand == br %}selected{% endif %}>{{ br }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Image</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.brand }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.category }}</td>
+            <td>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" width="100">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
