@@ -5,8 +5,8 @@ from .models import Item, Category, Brand
 
 # inventory/views.py
 from django.shortcuts import render
-from .models import Item
+from .models import Items
 
 def item_list(request):
-    items = Item.objects.all()  # Get all items from the database
+    items = Items.objects.all()  # Get all items from the database
     return render(request, 'item_list.html', {'items': items})
