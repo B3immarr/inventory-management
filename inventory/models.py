@@ -13,7 +13,7 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
-class Item(models.Model):
+class InventoryItems(models.Model):
     name = models.CharField(max_length=200)
     brand = models.CharField(max_length=100, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True, null=True)
