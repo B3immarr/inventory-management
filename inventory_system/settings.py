@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['.onrender.com']
 
 INSTALLED_APPS = [
     'inventory',
+     'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR /'inventory'/ 'static']
+
+STATICFILES_DIRS = [
+    BASE_DIR /'static',
+    ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
