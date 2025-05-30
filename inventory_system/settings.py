@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'inventory_system.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'  # fallback if DATABASE_URL isn't set
+        default='DATABASE_URL'  # fallback if DATABASE_URL isn't set
     )
 }
 
