@@ -72,10 +72,16 @@ WSGI_APPLICATION = 'inventory_system.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='DATABASE_URL'  # fallback if DATABASE_URL isn't set
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'inventory-db',         # Replace with your PostgreSQL DB name
+        'USER': 'inventory_db_vuwk_user',  # Replace with your PostgreSQL username
+        'PASSWORD': 'sqrGEy5Js3krDlAnhLphkWulwz8nIkBN',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
+
 
 
 
