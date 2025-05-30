@@ -1,7 +1,9 @@
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
+load_dotenv ()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-h54chse2@0p_ho_q+0#390o^#1p04#)yg339v07!savfjmer2k'
@@ -71,15 +73,18 @@ WSGI_APPLICATION = 'inventory_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import os
+import dj_database_url
+
+# Database configuration
+import os
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory-db',         # Replace with your PostgreSQL DB name
-        'USER': 'inventory_db_vuwk_user',  # Replace with your PostgreSQL username
-        'PASSWORD': 'sqrGEy5Js3krDlAnhLphkWulwz8nIkBN',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
 
 

@@ -13,10 +13,10 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
-class Items(models.Model):
+class Item(models.Model):
     name = models.CharField(max_length=200)
-    brand = models.CharField(max_length=100, blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True, null=True)
+    brand = models.CharField(max_length=100, blank=True, null=True)  # Consider ForeignKey if appropriate
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField()
     image = models.ImageField(upload_to='items/')
     description = models.TextField(blank=True)

@@ -23,7 +23,6 @@ from .views import item_list
 
 urlpatterns = [
      path('grappelli/', include('grappelli.urls')),
-    path('admin/', admin.site.urls),
     path('items/', item_list, name='item_list'),
     path('', item_list, name='item_list'),
 ]
