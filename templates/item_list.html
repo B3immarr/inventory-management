@@ -6,26 +6,6 @@
 <body>
     <h1>Items</h1>
 
-    <form method="get">
-        <label>Category:</label>
-        <select name="category">
-            <option value="">All</option>
-            {% for cat in categories %}
-                <option value="{{ cat }}" {% if request.GET.category == cat %}selected{% endif %}>{{ cat }}</option>
-            {% endfor %}
-        </select>
-
-        <label>Brand:</label>
-        <select name="brand">
-            <option value="">All</option>
-            {% for br in brands %}
-                <option value="{{ br }}" {% if request.GET.brand == br %}selected{% endif %}>{{ br }}</option>
-            {% endfor %}
-        </select>
-
-        <button type="submit">Filter</button>
-    </form>
-
     <table border="1" cellpadding="5">
         <tr>
             <th>ID</th>
@@ -44,11 +24,15 @@
             <td>{{ item.category }}</td>
             <td>
                 {% if item.image %}
-                    <img src="{{ item.image.url }}" width="100">
+                    <img src="{{ item.image.url }}" width="100" alt="{{ item.name }}">
                 {% else %}
                     No Image
                 {% endif %}
             </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No items found.</td>
         </tr>
         {% endfor %}
     </table>
