@@ -12,14 +12,16 @@ SECRET_KEY = 'django-insecure-h54chse2@0p_ho_q+0#390o^#1p04#)yg339v07!savfjmer2k
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '.onrender.com',
+    'localhost',
     '127.0.0.1',
+    'credible-parrot-singular.ngrok-free.app',
+    '.trycloudflare.com'
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'inventory',
+    
     'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'inventory',
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -55,10 +58,11 @@ ROOT_URLCONF = 'inventory_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-         'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],  # Points to inventory_system/templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -67,27 +71,31 @@ TEMPLATES = [
     },
 ]
 
+# Grappelli settings
+GRAPPELLI_ADMIN_TITLE = 'Inventory Management'
+GRAPPELLI_CLEAN_INPUT_TYPES = True  # Replaces HTML5 inputs with text for consistency
+
 WSGI_APPLICATION = 'inventory_system.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-import os
-import dj_database_url
 
 # Database configuration
 import os
-import dj_database_url
+
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://credible-parrot-singular.ngrok-free.app',
+]
 
 
 # Password validation

@@ -18,7 +18,7 @@ class Item(models.Model):
     brand = models.CharField(max_length=100, blank=True, null=True)  # Consider ForeignKey if appropriate
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField()
-    image = models.ImageField(upload_to='items/')
+    image = models.ImageField(upload_to='items/', blank=True)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
